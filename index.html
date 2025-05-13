@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Demo</title>
+    <link rel="stylesheet" href="./public/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Insertion Sort Visualization</h1>
+        
+        <div class="controls">
+            <button id="generateBtn">Generate New Array</button>
+            <button id="sortBtn">Start Sort</button>
+            <button id="resetBtn">Reset</button>
+            <div class="slider-container">
+                <label for="speedRange">Speed:</label>
+                <input type="range" id="speedRange" min="1" max="100" value="50">
+            </div>
+            <div class="slider-container">
+                <label for="sizeRange">Array Size:</label>
+                <input type="range" id="sizeRange" min="5" max="100" value="30">
+            </div>
+        </div>
+        
+        <div class="array-container" id="array-container"></div>
+        
+        <div class="info-panel">
+            <h2>About Insertion Sort</h2>
+            <p>Insertion Sort is a simple sorting algorithm that builds the final sorted array one item at a time. It's much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort, but it has several advantages:</p>
+            <ul>
+                <li>Simple implementation</li>
+                <li>Efficient for small data sets</li>
+                <li>Adaptive (efficient for datasets that are already substantially sorted)</li>
+                <li>Stable (does not change the relative order of elements with equal keys)</li>
+                <li>In-place (only requires a constant amount O(1) of additional memory space)</li>
+            </ul>
+            <h3>Time Complexity:</h3>
+            <ul>
+                <li>Best Case: O(n) - when the array is already sorted</li>
+                <li>Average Case: O(n²)</li>
+                <li>Worst Case: O(n²) - when the array is sorted in reverse order</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./public/js/script.js"></script>
+</body>
+</html>

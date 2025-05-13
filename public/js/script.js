@@ -126,15 +126,23 @@ async function insertionSort(arr) {
             const sourceBar = arrayBars[j];
             const targetBar = arrayBars[j + 1];
             
-            // Animate the swap
-            sourceBar.style.transform = `translateX(${barWidth}px)`;
-            targetBar.style.transform = `translateX(${-barWidth}px)`;
+            // Add moving class to indicate lift animation
+            sourceBar.classList.add('moving');
+            targetBar.classList.add('moving');
+            
+            // Animate the swap with translateY to lift bars up while moving
+            sourceBar.style.transform = `translateX(${barWidth}px) translateY(-20px)`;
+            targetBar.style.transform = `translateX(${-barWidth}px) translateY(-10px)`;
             
             await sleep(animationSpeed);
             
             // Reset animations and swap DOM elements
             sourceBar.style.transform = '';
             targetBar.style.transform = '';
+            
+            // Remove moving class after animation
+            sourceBar.classList.remove('moving');
+            targetBar.classList.remove('moving');
             
             // Swap DOM elements in the arrayBars array
             arrayBars[j + 1] = sourceBar;
@@ -168,11 +176,26 @@ async function insertionSort(arr) {
             // Find the insertion point in the DOM
             const insertionPoint = j + 1;
             
+            // Add moving class to lift the bar
+            currentBar.classList.add('moving');
+            
+            // Animate current bar lifting up before insertion
+            currentBar.style.transform = 'translateY(-30px)';
+            await sleep(animationSpeed);
+            
+            // Move to position
             if (insertionPoint < arr.length - 1) {
                 arrayContainer.insertBefore(currentBar, arrayBars[insertionPoint]);
             } else {
                 arrayContainer.appendChild(currentBar);
             }
+            
+            // Reset transform after insertion
+            currentBar.style.transform = '';
+            await sleep(animationSpeed / 2);
+            
+            // Remove moving class
+            currentBar.classList.remove('moving');
             
             // Update the arrayBars array
             arrayBars = Array.from(arrayContainer.children);
